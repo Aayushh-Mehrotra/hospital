@@ -13,7 +13,7 @@ const User = require('../models/User');
 const app = express();
 
 app.use(cors({
-  origin: '*',
+  origin: true,
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
