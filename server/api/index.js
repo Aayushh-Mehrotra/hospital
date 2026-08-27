@@ -37,7 +37,15 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// Health check route
+// Root & Health check routes
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    message: 'Welcome to CarePulse Hospital Management System API',
+    healthCheck: '/api/health',
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'online',

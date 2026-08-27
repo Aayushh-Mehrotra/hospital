@@ -30,7 +30,15 @@ if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
 // Serve uploaded assets
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Health check route
+// Root & Health check routes
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    message: 'Welcome to CarePulse Hospital Management System API',
+    healthCheck: '/api/health',
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'online',
